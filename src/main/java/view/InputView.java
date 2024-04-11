@@ -5,17 +5,19 @@ import model.Car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class InputView {
+    private final Logger LOGGER = Logger.getLogger(getClass().getName());
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public List<Car> askCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        LOGGER.info("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
         try {
             return toCars(SCANNER.nextLine());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
 
         return askCarNames();
@@ -33,12 +35,12 @@ public class InputView {
     }
 
     public int askRacingTurn() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
+        LOGGER.info("시도할 회수는 몇 회 인가요?");
 
         try {
             return toInt(SCANNER.nextLine());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
 
         return askRacingTurn();

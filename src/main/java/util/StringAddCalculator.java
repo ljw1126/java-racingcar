@@ -17,6 +17,9 @@ public class StringAddCalculator {
     private static final int SOURCE_INDEX = 2;
     private static final String NO_NEGATIVE = "음수는 불가능합니다.";
 
+    private StringAddCalculator() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {

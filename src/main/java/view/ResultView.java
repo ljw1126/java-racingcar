@@ -5,29 +5,27 @@ import model.Cars;
 import model.RacingRecord;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import static java.util.stream.Collectors.joining;
 
 public class ResultView {
-
+    private final Logger LOGGER = Logger.getLogger(getClass().getName());
     private static final String HYPHEN = "-";
     private static final String NEW_LINE = System.lineSeparator();
 
-    public ResultView() {
-    }
-
-    public void print(RacingRecord record) {
+    public void print(RacingRecord racingRecord) {
         StringBuilder sb = new StringBuilder();
 
-        draw(sb, record);
+        draw(sb, racingRecord);
 
-        System.out.println(sb);
+        LOGGER.info(sb.toString());
     }
 
-    private void draw(StringBuilder sb, RacingRecord record) {
+    private void draw(StringBuilder sb, RacingRecord racingRecord) {
         sb.append("실행결과").append(NEW_LINE);
-        render(sb, record.getRecords());
-        appendWinners(sb, record.winners());
+        render(sb, racingRecord.getRecords());
+        appendWinners(sb, racingRecord.winners());
     }
 
     private void render(StringBuilder sb, List<Cars> records) {
